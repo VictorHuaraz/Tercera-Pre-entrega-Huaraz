@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from SocialTravel.models import Post
-from SocialTravel.forms import PostForm
+from entrega.models import Post
+from entrega.forms import PostForm
 
 def index(request):
-    return render(request, "SocialTravel/index.html")
+    return render(request, "entrega/index.html")
 
 
 def mostrar_posts(request):
@@ -13,7 +13,7 @@ def mostrar_posts(request):
          }
 
     
-    return render(request, "SocialTravel/admin_post.html", context)
+    return render(request, "entrega/admin_post.html", context)
 
 
 def agregar_post(request):
@@ -24,10 +24,10 @@ def agregar_post(request):
          "form": PostForm(),
          }
 
-    return render(request, "SocialTravel/admin_post.html", context)
+    return render(request, "entrega/admin_post.html", context)
 
 
 def buscar_post(request):
     criterio = request.GET.get("criterio")
     context = { "posts": Post.objects.filter(carousel_caption_title__icontains=criterio).all()}
-    return render(request, "SocialTravel/admin_post.html", context)
+    return render(request, "entrega/admin_post.html", context)
